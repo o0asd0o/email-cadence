@@ -1,0 +1,30 @@
+generator kysely {
+  provider = "prisma-kysely"
+  output   = "../src/db"
+  fileName = "types.ts"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../data/cadence.db"
+}
+
+model Cadence {
+  id        String   @id
+  name      String
+  steps     String // JSON-serialized CadenceStep[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  enrollments Enrollment[]
+}
+
+model Enrollment {
+  id           String   @id
+  cadenceId    String
+  contactEmail String
+  workflowId   String
+  createdAt    DateTime @default(now())
+
+  cadence Cadence @relation(fields: [cadenceId], references: [id])
+}

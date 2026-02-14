@@ -1,0 +1,16 @@
+{
+  "name": "email-cadence",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev --ui tui",
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev:worker": "pnpm --filter worker dev",
+    "build": "turbo run build"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.5.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

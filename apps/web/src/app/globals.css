@@ -1,0 +1,43 @@
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+textarea {
+  font-family: monospace;
+  font-size: 13px;
+  width: 100%;
+  min-height: 280px;
+}
+
+button {
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+input {
+  padding: 0.4rem;
+  margin-right: 0.5rem;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.8rem;
+  text-align: left;
+}
