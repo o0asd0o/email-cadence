@@ -6,7 +6,9 @@
     "dev:web": "pnpm --filter web dev",
     "dev:api": "pnpm --filter api dev",
     "dev:worker": "pnpm --filter worker dev",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "env:init": "turbo run env:init",
+    "migrate": "pnpm --filter api db:migrate"
   },
   "devDependencies": {
     "turbo": "^2.3.0",

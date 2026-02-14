@@ -30,6 +30,52 @@ repo/
 - **pnpm** 9+ (`npm install -g pnpm`)
 - **Temporal server** running locally (e.g., `temporal server start-dev`)
 
+## Getting Started
+
+### 1. Install dependencies
+
+```bash
+pnpm install
+```
+
+### 2. Create `.env` files from templates
+
+```bash
+pnpm env:init
+```
+
+This copies each app's `.env.example` → `.env` (skips if `.env` already exists). Edit the generated files to customise values.
+
+### 3. Run database migrations
+
+```bash
+pnpm migrate
+```
+
+Creates / updates the SQLite database at `apps/api/data/cadence.db` via Prisma.
+
+### 4. Start Temporal
+
+```bash
+temporal server start-dev
+```
+
+### 5. Start all apps
+
+```bash
+pnpm dev
+```
+
+Or run them individually:
+
+```bash
+pnpm dev:web      # Next.js on http://localhost:3000
+pnpm dev:api      # NestJS  on http://localhost:3001
+pnpm dev:worker   # Temporal worker
+```
+
+> **Note:** Make sure the Temporal server is running before starting the worker and API.
+
 ## Temporal Configuration
 
 The following environment variables configure the Temporal connection. Defaults are provided for local development:
@@ -42,31 +88,20 @@ The following environment variables configure the Temporal connection. Defaults 
 | `API_PORT`            | `3001`                  | NestJS API port              |
 | `NEXT_PUBLIC_API_URL` | `http://localhost:3001` | API URL for the frontend     |
 
-Copy `.env.example` to `.env` and adjust as needed.
+Copy `.env.example` to `.env` and adjust as needed (or just run `pnpm env:init`).
 
-## Install
+## Available Scripts
 
-```bash
-pnpm install
-```
-
-## Run
-
-### All apps at once (Turborepo)
-
-```bash
-pnpm dev
-```
-
-### Individual apps
-
-```bash
-pnpm dev:web      # Next.js on http://localhost:3000
-pnpm dev:api      # NestJS  on http://localhost:3001
-pnpm dev:worker   # Temporal worker
-```
-
-> **Note:** Make sure the Temporal server is running before starting the worker and API.
+| Command           | Description                                                |
+| ----------------- | ---------------------------------------------------------- |
+| `pnpm install`    | Install all dependencies                                   |
+| `pnpm env:init`   | Copy `.env.example` → `.env` in each app (no-op if exists) |
+| `pnpm migrate`    | Run Prisma migrations on the API database                  |
+| `pnpm dev`        | Start all apps via Turborepo (TUI mode)                    |
+| `pnpm dev:web`    | Start only the Next.js frontend                            |
+| `pnpm dev:api`    | Start only the NestJS API                                  |
+| `pnpm dev:worker` | Start only the Temporal worker                             |
+| `pnpm build`      | Build all apps                                             |
 
 ## API Endpoints
 

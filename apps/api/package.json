@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "ts-node --swc -r reflect-metadata src/main.ts",
     "build": "tsc",
+    "env:init": "node ../../scripts/update-env.js",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev"
   },

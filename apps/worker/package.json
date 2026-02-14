@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "tsx src/worker.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "env:init": "node ../../scripts/update-env.js"
   },
   "dependencies": {
     "@cadence/shared": "workspace:*",
