@@ -27,33 +27,6 @@ export class DatabaseService implements OnModuleInit {
   }
 
   async onModuleInit() {
-    // Create tables if they don't exist (no Prisma Migrate needed at runtime)
-    await this.db.schema
-      .createTable("Cadence")
-      .ifNotExists()
-      .addColumn("id", "text", (col) => col.primaryKey())
-      .addColumn("name", "text", (col) => col.notNull())
-      .addColumn("steps", "text", (col) => col.notNull())
-      .addColumn("createdAt", "text", (col) =>
-        col.notNull().defaultTo(new Date().toISOString()),
-      )
-      .addColumn("updatedAt", "text", (col) =>
-        col.notNull().defaultTo(new Date().toISOString()),
-      )
-      .execute();
-
-    await this.db.schema
-      .createTable("Enrollment")
-      .ifNotExists()
-      .addColumn("id", "text", (col) => col.primaryKey())
-      .addColumn("cadenceId", "text", (col) => col.notNull())
-      .addColumn("contactEmail", "text", (col) => col.notNull())
-      .addColumn("workflowId", "text", (col) => col.notNull())
-      .addColumn("createdAt", "text", (col) =>
-        col.notNull().defaultTo(new Date().toISOString()),
-      )
-      .execute();
-
     console.log(`SQLite database ready at ${DB_PATH}`);
   }
 }
